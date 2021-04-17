@@ -1,0 +1,23 @@
+﻿@model Task.Views.ViewModel
+@using Task.Views
+@{
+    ViewBag.Title = "gecmisSiparisler";
+}
+
+<h2>Geçmiş Siparişler</h2>
+
+<ul>
+
+    @foreach (var siparis in Model.Siparisler)
+    {
+
+        <li>
+
+            @("KULLANICI NO: " + siparis.userID + "  ADET: " + siparis.count + "  SİPARİŞ NO: " + siparis.orderNo + "  TARİH: " + siparis.timeStamp + "  ÜRÜN NO: " + siparis.productID)
+
+        </li>
+
+
+    }
+
+</ul>

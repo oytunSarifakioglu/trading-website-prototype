@@ -1,0 +1,292 @@
+﻿@model Task.Views.ViewModel
+@using Task_Back_End.Models
+@using Task.Views
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <style>
+        .box {
+            height: 200px;
+        }
+
+        div span {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background: #343a40;
+            color: aquamarine;
+        }
+
+        .baslik {
+            margin-top: 2rem;
+        }
+
+        .bg-dark {
+            color: aquamarine;
+            margin-left: 65rem;
+            margin-top: 1.25rem;
+        }
+
+        .horizontal {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(91, 142, 190);
+            height: 140px;
+        }
+
+        .dropdown {
+            position: inherit;
+            display: inline-block;
+            text-align: center;
+            margin-left: 79rem;
+            margin: 2px;
+            padding: 3px;
+            background-color: #343a40;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #0f0606;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            text-align: left;
+            margin: 0.25rem;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .card-body {
+            visibility: hidden;
+        }
+
+        .card-img-top:hover + .card-body {
+            background-color: black;
+            visibility: visible;
+        }
+
+        .card-body:hover {
+            background-color: black;
+            visibility: visible !important;
+        }
+
+        #my-alert {
+            position: fixed;
+            top: 35%;
+            left: 35%;
+            width: 250px;
+            display: none;
+            border: 1px solid black;
+            background-color: #ccc;
+            padding: 10px;
+        }
+
+        #alert-close {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <nav class="horizontal">
+        <h1 class="baslik">Sepet</h1>
+        <button class="bg-dark">Siparişi Onayla</button>
+        <div class="dropdown">
+            <span>S</span>
+            <div class="dropdown-content">
+                <img src="~/Views/Login/Görüntüler/Silgi.jpg" style="width: 100px; height: 100px;"><input type="button" id="s1" value="0">
+                <img src="Defter.jpg" alt="Defter" style="width: 100px; height: 100px;"><input type="button" id="s2" value="0">
+                <img src="PilotKalem.jpg" alt="PilotKalem" style="width: 100px; height: 100px;"><input type="button" id="s3" value="0">
+                <img src="Bant.jpg" alt="Bant" style="width: 100px; height: 100px;"><input type="button" id="s4" value="0">
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md">
+                <div class="card text-center">
+                    <img src="Silgi.jpg" class="card-img-top" alt="Silgi" style="width: 200px; height: 200px;">
+                    <div class="card-body">
+                        <input type=button onclick="arttir1()" value="+">
+                        <input class="minusButton" type=button onclick="azalt1()" value="-" id="minusButton1">
+                        <input type=button id="sonuc1" value="0">
+                        <button id="f1">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card text-center">
+                    <img src="Defter.jpg" class="card-img-top" alt="Defter" style="width: 200px; height: 200px;">
+                    <div class="card-body">
+                        <input type=button onclick="arttir2()" value="+">
+                        <input class="minusButton" type=button onclick="azalt2()" value="-" id="minusButton2">
+                        <input type=button id="sonuc2" value="0">
+                        <button id="f2">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md">
+                <div class="card text-center">
+                    <img src="PilotKalem.jpg" class="card-img-top" alt="PilotKalem" style="width: 200px; height: 200px;">
+                    <div class="card-body">
+                        <input type=button onclick="arttir3()" value="+">
+                        <input class="minusButton" type=button onclick="azalt3()" value="-" id="minusButton3">
+                        <input type=button id="sonuc3" value="0">
+                        <button id="f3">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card text-center">
+                    <img src="Bant.jpg" class="card-img-top" alt="Bant" style="width: 200px; height: 200px;">
+                    <div class="card-body">
+                        <input type=button onclick="arttir4()" value="+">
+                        <input class="minusButton" type=button onclick="azalt4()" value="-" id="minusButton4">
+                        <input type=button id="sonuc4" value="0">
+                        <button id="f4">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script>
+        function arttir1() {
+            var sonuc1 = document.getElementById("sonuc1");
+            if (sonuc1.value < 2) {
+                sonuc1.value = Number(sonuc1.value) + 1;
+            }
+            else {
+                return sonuc1.value;
+            }
+        }
+        function azalt1() {
+            var sonuc1 = document.getElementById("sonuc1");
+            if (sonuc1.value == 0) {
+                sonuc1.value = 0;
+                $("#minusButton1").tooltip('toggle'); setTimeout(function () {
+                    $("#minusButton1").tooltip('toggle');
+                }, 3000);
+            }
+            else {
+                sonuc1.value = Number(sonuc1.value) - 1;
+            }
+        }
+        function arttir2() {
+            var sonuc2 = document.getElementById("sonuc2");
+            if (sonuc2.value < 25) {
+                sonuc2.value = Number(sonuc2.value) + 1;
+            }
+            else {
+                return sonuc2.value;
+            }
+        }
+        function azalt2() {
+            var sonuc2 = document.getElementById("sonuc2");
+            if (sonuc2.value == 0) {
+                sonuc2.value = 0;
+                $("#minusButton2").tooltip('toggle'); setTimeout(function () {
+                    $("#minusButton2").tooltip('toggle');
+                }, 3000);
+            }
+            else {
+                sonuc2.value = Number(sonuc2.value) - 1;
+            }
+        }
+        function arttir3() {
+            var sonuc3 = document.getElementById("sonuc3");
+            if (sonuc3.value < 15) {
+                sonuc3.value = Number(sonuc3.value) + 1;
+            }
+            else {
+                return sonuc3.value;
+            }
+        }
+        function azalt3() {
+            var sonuc3 = document.getElementById("sonuc3");
+            if (sonuc3.value == 0) {
+                sonuc3.value = 0;
+                $("#minusButton3").tooltip('toggle'); setTimeout(function () {
+                    $("#minusButton3").tooltip('toggle');
+                }, 3000);
+            }
+            else {
+                sonuc3.value = Number(sonuc3.value) - 1;
+            }
+        }
+        function arttir4() {
+            var sonuc4 = document.getElementById("sonuc4");
+            if (sonuc4.value < 82) {
+                sonuc4.value = Number(sonuc4.value) + 1;
+            }
+            else {
+                return sonuc4.value;
+            }
+        }
+        function azalt4() {
+            var sonuc4 = document.getElementById("sonuc4");
+            if (sonuc4.value == 0) {
+                sonuc4.value = 0;
+                $("#minusButton4").tooltip('toggle'); setTimeout(function () {
+                    $("#minusButton4").tooltip('toggle');
+                }, 3000);
+            }
+            else {
+                sonuc4.value = Number(sonuc4.value) - 1;
+            }
+
+        }
+
+        var f1 = document.getElementById("f1");
+        var f2 = document.getElementById("f2");
+        var f3 = document.getElementById("f3");
+        var f4 = document.getElementById("f4");
+
+        var s1 = document.getElementById("s1");
+        var s2 = document.getElementById("s2");
+        var s3 = document.getElementById("s3");
+        var s4 = document.getElementById("s4");
+
+        f1.onclick = function () {
+            s1.value = sonuc1.value;
+        }
+        f2.onclick = function () {
+            s2.value = sonuc2.value;
+        }
+        f3.onclick = function () {
+            s3.value = sonuc3.value;
+        }
+        f4.onclick = function () {
+            s4.value = sonuc4.value;
+        }
+
+        $(function () {
+            $(".minusButton").tooltip({ title: "0'dan asagiya indirilemez.", trigger: 'manual' });
+        });
+
+    </script>
+</body>
+</html>
+

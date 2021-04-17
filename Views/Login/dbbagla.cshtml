@@ -1,0 +1,17 @@
+﻿@model Task.Views.ViewModel
+
+
+@{
+    ViewBag.Title = "dbbagla";
+}
+
+<h2>dbbagla</h2>
+
+<ul>
+    @foreach (var kisi in Model.İnsanlar)
+    {
+        <li>
+            @(kisi.userID)
+        </li>
+    }
+</ul>

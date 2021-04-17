@@ -1,0 +1,121 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müşteri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <!--<link rel="stylesheet" href="müşteri.css">-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .white {
+            color: #fff;
+        }
+
+        .element {
+            text-decoration: none;
+        }
+
+            .element:hover {
+                color: #fff;
+            }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .heading-small {
+            font-size: 1.25rem;
+        }
+
+        .bg-dark-blue {
+            background-color: #419dec;
+        }
+
+        .bg-light-blue {
+            background-color: #336ea2;
+        }
+
+        #navbar {
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0.75rem;
+            height: 70px;
+        }
+
+            #navbar ul {
+                list-style-type: none;
+                display: flex;
+                align-items: center;
+            }
+
+                #navbar ul li a {
+                    padding: 0.75rem;
+                }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .bind {
+            height: 40px;
+            width: 40px;
+            text-decoration: none;
+            background-color: #419dec;
+            color: #336ea2;
+            font-size: 15px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        /*.bind:hover {
+                color: black;
+                display: block;
+            }*/
+    </style>
+</head>
+<body>
+    <header class="bg-dark-blue">
+        <div class="container">
+            <nav id="navbar">
+                <h1 class="heading-small">Müşteri</h1>
+                <ul class="white">
+                    @Html.ActionLink("Ürünler", "sepet")
+                    @Html.ActionLink("Kişi Bazlı Sipariş", "kisiBazlıSiparis")
+                    <li><a href="rapor" class="element">Geçmiş Siparişler</a></li>
+                    <!--<div class="bind">S</div>-->
+                    @using (Html.BeginForm())
+                    {
+                        <div class="bind">
+
+                            <div class="bind">
+                                <label class="bg-dark-blue"></label>
+                                @Html.DropDownList("S", (SelectList)ViewBag.UrunData, "S", new { @class = "bind" })
+                                <!--<button class="bg-dark-blue" type="submit">Siparişleri Ver</button>-->
+                                @Html.ActionLink("Sipariş Ver", "sepet")
+                            </div>
+                        </div>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

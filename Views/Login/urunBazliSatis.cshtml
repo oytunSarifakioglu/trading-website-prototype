@@ -1,0 +1,20 @@
+﻿@model Task.Views.ViewModel
+@using Task.Views
+@{
+    ViewBag.Title = "urunBazliSatis";
+}
+
+<h2>Ürün Bazlı Satış</h2>
+
+<ul>
+
+
+    @foreach(var urun in Model.Ürünler)
+    {
+        <li>
+            @(urun.productID + "NUMARALI ÜRÜN TOPLAM  " + (100 - urun.stock) + "  ADET SATILMIŞTIR. STOKTA  " + urun.stock + "  ADET KALMIŞTIR.")
+        </li>
+    }
+
+
+</ul>

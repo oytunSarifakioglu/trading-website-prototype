@@ -1,0 +1,25 @@
+﻿@model Task.Views.ViewModel
+@using Task.Views
+@{
+    ViewBag.Title = "kisiBazlıSiparis";
+}
+
+<h2>kisiBazlıSiparis</h2>
+
+<ul>
+
+
+    @foreach (var siparis in Model.Siparisler)
+    {
+        <li>
+            @if (siparis.userID == 10)
+            {
+                @(siparis.productID + "  NUMARALI ÜRÜN  " + siparis.count + "  ADET  " + siparis.timeStamp + "  TARİHİNDE SİPARİŞ EDİLMİŞTİR.")
+            }
+
+        </li>   
+    }
+
+
+</ul>
+
